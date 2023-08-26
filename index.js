@@ -26,7 +26,7 @@ sequelize.sync()
   const updateanddelete = require('./routes/updateanddelete');
   
     app.use('/register', register);
-    app.use('/updateanddelete', [authenticate],updateanddelete);
+    app.use('/updateanddelete',updateanddelete);
 
 const port = 3000;
 app.listen(port, () => console.log(` App listening on port ${port}!`));

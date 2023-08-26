@@ -12,6 +12,8 @@ const authenticate = async (req, res, next) => {
         }
         req.user = user;
         req.email = user.email;
+        req.id = user.id;
+        console.log(req.id + 'userid' )
         console.log(req.email + ' ' + token)
         req.token = token;
         next();
