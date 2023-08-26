@@ -15,6 +15,7 @@ const LoginUser = async (req, res) => {
         }
         const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 3600});
         user.jwt = token;
+        console.log(token)
         await user.save();
         if(!user.jwt){
             return res.status(400).json({message: 'Token not created'});

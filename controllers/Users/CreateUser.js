@@ -1,7 +1,7 @@
 const users = require('../../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 
 const createUser = async (req, res) => {
    try{
@@ -19,6 +19,7 @@ const createUser = async (req, res) => {
        
         const token = jwt.sign({id: newUser.id}, process.env.JWT_SECRET, {expiresIn: 3600});
         newUser.jwt = token;
+        console.log(token)
         await newUser.save();
         if(!newUser.jwt){
             return res.status(400).json({message: 'Token not created'});
