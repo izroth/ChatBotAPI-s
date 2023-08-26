@@ -5,6 +5,10 @@ const jwt = require('jsonwebtoken');
 const LoginUser = async (req, res) => {
     try{
         const { email, password } = req.body;
+        if(!email || !password){
+            return res.status(400).json({message: 'Please enter all fields'});
+        }
+        
         const user = await users.findOne({ where: { email: email } });
         if (!user) {
             return res.status(400).json({ message: 'User does not exist' });

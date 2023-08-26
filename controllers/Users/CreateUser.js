@@ -6,6 +6,10 @@ require('dotenv').config();
 const createUser = async (req, res) => {
    try{
     const { name, email, password } = req.body;
+    if(!name || !email || !password){
+        return res.status(400).json({message: 'Please enter all fields'});
+    }
+    
     const user = await users.findOne({ where: { email: email } });
     if (user) {
         return res.status(400).json({ message: 'User already exists' });

@@ -11,6 +11,8 @@ const authenticate = async (req, res, next) => {
             throw new Error();
         }
         req.user = user;
+        req.email = user.email;
+        console.log(req.email + ' ' + token)
         req.token = token;
         next();
     }
