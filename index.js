@@ -1,6 +1,9 @@
 const express = require('express');
 const  sequelize  = require('./DB/db');
 const app = express();
+const authenticate = require('./middleware/authenticate');
+
+
 require('./DB/db');
 const bodyParser = require('body-parser');
 
