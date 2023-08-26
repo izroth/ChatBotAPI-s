@@ -21,6 +21,12 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: true
         
+    },
+    role :{
+        type: DataTypes.STRING,
+        enum: ['enduser', ''],
+        allowNull: true
+
     }
 
 });
