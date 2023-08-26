@@ -24,9 +24,13 @@ sequelize.sync()
 
   const register = require('./routes/register');
   const updateanddelete = require('./routes/updateanddelete');
+const conversation = require('./routes/conversation');
   
     app.use('/register', register);
+    //app.use('/updateanddelete',[authenticate],updateanddelete)
     app.use('/updateanddelete',updateanddelete);
+    //conversation require to singup to generate token and put it in the header of the request 
+    app.use('/conversation',[authenticate],conversation);
 
 const port = 3000;
 app.listen(port, () => console.log(` App listening on port ${port}!`));
